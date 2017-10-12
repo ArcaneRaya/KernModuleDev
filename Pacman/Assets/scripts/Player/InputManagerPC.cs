@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class InputManagerPC : InputManager {
 
+	// build in system to avoid release problems with multiple keys
+
 	protected override void ProcessInput () {
 		if (Input.GetKeyDown(KeyCode.A)) {
 			direction = new Vector2 (-1, 0);

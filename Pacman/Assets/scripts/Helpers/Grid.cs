@@ -21,8 +21,9 @@ public class Grid {
 		}
 	}
 
-	public void AssignCell (int x, int y, OccupantType occupantType, GameObject objectRef){
+	public GridVector AssignCell (int x, int y, OccupantType occupantType, GameObject objectRef){
 		cells [x] [y] = new GridVector (x, y, occupantType, objectRef);
+		return cells [x] [y];
 	}
 
 	public GridVector GetCell (int x, int y) {

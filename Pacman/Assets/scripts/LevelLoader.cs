@@ -8,7 +8,10 @@ public class LevelLoader : MonoBehaviour {
 	public Texture2D map;
 	public GameObject wall;
 	public GameObject floor;
+	public GameObject playerPrefab;
+	public GameObject ghostPrefab;
 	public Grid levelGrid;
+	public GridVector spawnPoint;
 
 	// Use this for initialization
 	void Awake () {
@@ -66,6 +69,13 @@ public class LevelLoader : MonoBehaviour {
 		if (pixelColor == Color.black) {
 			GameObject objectRef = Instantiate (wall, new Vector3 (x - offset, y - offset, 0), Quaternion.identity, gameObject.transform);
 			levelGrid.AssignCell (x, y, OccupantType.wall, objectRef);
+		} else if (pixelColor == new Color(1,1,0)) { // player
+			GameObject objectRef = Instantiate (floor, new Vector3 (x - offset, y - offset, 0), Quaternion.identity, gameObject.transform);
+			Instantiate (playerPrefab, new Vector3 (x - offset, y - offset, -1), Quaternion.identity);
+			spawnPoint = levelGrid.AssignCell (x, y, OccupantType.empty, objectRef);
+		} else if (pixelColor == new Color(1,0,1)) { // ghost
+			GameObject objectRef = Instantiate (floor, new Vector3 (x - offset, y - offset, 0), Quaternion.identity, gameObject.transform);
+			Instantiate (ghostPrefab, new Vector3 (x - offset, y - offset, -1), Quaternion.identity).GetComponent<EnemyMovement>().Setup (levelGrid.AssignCell (x, y, OccupantType.empty, objectRef));;
 		} else {
 			GameObject objectRef = Instantiate (floor, new Vector3 (x - offset, y - offset, 0), Quaternion.identity, gameObject.transform);
 			levelGrid.AssignCell (x, y, OccupantType.empty, objectRef);

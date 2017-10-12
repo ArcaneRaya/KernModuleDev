@@ -32,4 +32,8 @@ public class Directions {
 			return !lhs.down;
 		return false;
 	}
+
+	public static explicit operator int (Directions directions) {
+		return (directions.left ? 1 : 0) + (directions.up ? 1 : 0) + (directions.right ? 1 : 0) + (directions.down ? 1 : 0);
+	}
 }

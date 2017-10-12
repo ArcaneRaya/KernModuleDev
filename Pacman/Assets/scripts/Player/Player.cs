@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+	public static Player instance;
+
 	public Vector2 direction;
 	private InputManager inputManager;
 	private GridVector currentVector;
@@ -12,10 +14,12 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		currentVector = LevelLoader.instance.levelGrid.GetCell (1, 1);
+		if (instance != null) {
+			Destroy (instance.gameObject);
+		}
+		instance = this;
+		currentVector = LevelLoader.instance.spawnPoint;
 		targetVector = currentVector;
-		Vector3 goTo = currentVector.objectRef.transform.position;
-		transform.position = new Vector3 (goTo.x, goTo.y, transform.position.z);
 		inputManager = new InputManagerPC();
 	}
 	
@@ -27,6 +31,14 @@ public class Player : MonoBehaviour {
 
 	private void Move () {
 		Vector2 desiredDirection = inputManager.Direction ();
+
+		if (Vector2.Distance ((Vector2)transform.position, (Vector2)targetVector.objectRef.transform.position) < (Time.deltaTime * speed)) {
+			transform.position = targetVector.objectRef.transform.position + new Vector3(0,0,-1);
+			currentVector = targetVector;
+		} else {
+			transform.position += (Vector3)direction * Time.deltaTime * speed;
+		}
+
 		if (currentVector == targetVector) {
 			if (desiredDirection != Vector2.zero) {
 				Directions allowedDirections = LevelLoader.instance.ProvideAllowedDirections (currentVector);
@@ -35,13 +47,6 @@ public class Player : MonoBehaviour {
 					direction = desiredDirection;
 				}
 			}
-		}
-
-		if (Vector3.Distance (transform.position, targetVector.objectRef.transform.position) < (Time.deltaTime * speed)) {
-			transform.position = targetVector.objectRef.transform.position;
-			currentVector = targetVector;
-		} else {
-			transform.position += (Vector3)direction * Time.deltaTime * speed;
 		}
 	}
 }
