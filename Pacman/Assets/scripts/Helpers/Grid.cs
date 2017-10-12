@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Grid {
+	public List<List<GridVector>> Cells {
+		get {
+			return cells;
+		}
+	}
+
 	private List<List<GridVector>> cells;
 
 	public Grid (int size){
@@ -19,10 +25,10 @@ public class Grid {
 		cells [x] [y] = new GridVector (x, y, occupantType, objectRef);
 	}
 
-	public GameObject GetCell (int x, int y) {
+	public GridVector GetCell (int x, int y) {
 		if (-1 < x && x < cells.Count && -1 < y && y < cells.Count) {
-			return cells [x] [y].objectRef;
+			return cells [x] [y];
 		}
-		throw new KeyNotFoundException ();
+		return null;
 	}
 }

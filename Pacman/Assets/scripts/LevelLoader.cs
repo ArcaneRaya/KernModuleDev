@@ -1,4 +1,4 @@
-﻿
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelLoader : MonoBehaviour {
@@ -14,6 +14,41 @@ public class LevelLoader : MonoBehaviour {
 	void Awake () {
 		instance = this;
 		GenerateLevel ();
+	}
+
+	public static GridVector GetCel (int x, int y) {
+		return instance.levelGrid.GetCell (x, y);
+	}
+
+	public Directions ProvideAllowedDirections (GridVector currentPos){
+		Directions allowedDirections = new Directions();
+		int x = currentPos.x;
+		int y = currentPos.y;
+		GridVector cell;
+		if (-1 < x && x < levelGrid.Cells.Count && -1 < y && y < levelGrid.Cells.Count) {
+			if ((cell = levelGrid.GetCell (x - 1, y)) != null) {
+				if (cell.occupant == OccupantType.empty) {
+					allowedDirections.left = true;
+				}
+			}
+			if ((cell = levelGrid.GetCell (x, y + 1)) != null) {
+				if (cell.occupant == OccupantType.empty) {
+					allowedDirections.up = true;
+				}
+			}
+			if ((cell = levelGrid.GetCell (x + 1, y)) != null) {
+				if (cell.occupant == OccupantType.empty) {
+					allowedDirections.right = true;
+				}
+			}
+			if ((cell = levelGrid.GetCell (x, y - 1)) != null) {
+				if (cell.occupant == OccupantType.empty) {
+					allowedDirections.down = true;
+				}
+			}
+			return allowedDirections;
+		}
+		throw new KeyNotFoundException ();
 	}
 
 	void GenerateLevel (){

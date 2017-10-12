@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba70b43e86e6d4703bc5fa1896d64c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  map: {fileID: 2800000, guid: 059bcc1c255f04b32bc633567e774a5e, type: 3}
+  map: {fileID: 2800000, guid: ff64a4e6371a34949bd743e5bdfd16b0, type: 3}
   wall: {fileID: 1685988754575380, guid: fb0a6198c31b242c0b2812c0ad6b3517, type: 2}
   floor: {fileID: 1921506538967752, guid: b08c91717d28a4b08bb23388cb19aacd, type: 2}
 --- !u!81 &1070979550
