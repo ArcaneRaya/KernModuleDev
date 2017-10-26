@@ -24,5 +24,9 @@ public static class ObjectPool {
 		return pools.ContainsKey (occupantType);
 	}
 
+	public static bool IsEntirelyInactive (OccupantType occupantType) {
+		return pools [occupantType].IsEntirelyInactive ();
+	}
+
 	private static Dictionary <OccupantType, GameobjectPool> pools = new Dictionary<OccupantType, GameobjectPool>();
 }

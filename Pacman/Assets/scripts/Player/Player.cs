@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
+	
+	public static PlayerAction Shoot;
+	public static Player instance;
+
 
 	public Vector2 CurrentVector {
 		get {
@@ -11,10 +15,6 @@ public class Player : MonoBehaviour {
 	}
 
 	public delegate void PlayerAction ();
-	public static PlayerAction Shoot;
-
-	public static Player instance;
-
 	public Vector2 direction;
 	private Vector2 currentVector;
 	private Vector2 targetVector;
@@ -102,6 +102,9 @@ public class Player : MonoBehaviour {
 			}
 			Grid.GetCell (currentVector).objectRef = new List<GameObject> ();
 			Grid.GetCell (currentVector).occupants = new List<OccupantType> ();
+		}
+		if (ObjectPool.IsEntirelyInactive (OccupantType.pelletBase)) {
+			DestroyPlayer ();
 		}
 	}
 

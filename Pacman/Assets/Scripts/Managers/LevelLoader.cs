@@ -53,6 +53,7 @@ public class LevelLoader : MonoBehaviour {
 			ObjectPool.AddPool (OccupantType.bullet, bulletPrefab, 20, true);
 		}
 
+		GameManager.ResetScore ();
 		GenerateLevel(Grid.Initialize (this));
 	}
 

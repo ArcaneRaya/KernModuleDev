@@ -40,4 +40,13 @@ public class GameobjectPool : MonoBehaviour {
 		}
 		return null;
 	}
+
+	public bool IsEntirelyInactive () {
+		foreach (GameObject obj in objectPool){
+			if (!obj.activeSelf){
+				return false;
+			}
+		}
+		return true;
+	}
 }

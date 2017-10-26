@@ -23,6 +23,7 @@ public class Grid {
 	private LevelLoader levelLoader;
 
 
+
 	public static Grid Initialize (LevelLoader loader) {
 		instance = new Grid ();
 		instance.levelLoader = loader;
