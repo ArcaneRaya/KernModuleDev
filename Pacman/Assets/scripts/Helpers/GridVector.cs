@@ -1,20 +1,27 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class GridVector {
 	public GridVector () {
-		x = -1;
-		y = -1;
-		occupant = OccupantType.empty;
+		occupants = null;
 		objectRef = null;
 	}
-	public GridVector (int x, int y, OccupantType occupant, GameObject objectRef){
-		this.x = x;
-		this.y = y;
-		this.occupant = occupant;
-		this.objectRef = objectRef;
+
+	public GridVector (List <OccupantType> newoccupants){
+		occupants = newoccupants;
+		objectRef = new List<GameObject>();
+		temporaryOccupants = new List<MonoBehaviour> ();
+		if (occupants.Contains (OccupantType.wall) || occupants.Contains (OccupantType.statue)){
+			walkable = false;
+		} else {
+			walkable = true;
+		}
+		activated = false;
 	}
-	public int x;
-	public int y;
-	public OccupantType occupant;
-	public GameObject objectRef;
+
+	readonly public bool walkable;
+	public bool activated;
+	public List<OccupantType> occupants;
+	public List<MonoBehaviour> temporaryOccupants;
+	public List<GameObject> objectRef;
 }

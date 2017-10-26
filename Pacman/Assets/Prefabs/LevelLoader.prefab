@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1871318774624120}
+  m_IsPrefabParent: 1
+--- !u!1 &1871318774624120
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4767828629067528}
+  - component: {fileID: 114462878544786974}
+  m_Layer: 0
+  m_Name: LevelLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4767828629067528
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1871318774624120}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114462878544786974
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1871318774624120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba70b43e86e6d4703bc5fa1896d64c0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallsnpelletMap: {fileID: 2800000, guid: cb0a9d88dbfe7450684be762d62e9bd1, type: 3}
+  weaponMap: {fileID: 2800000, guid: dca584aff64a94eafbb7b95651f18297, type: 3}
+  enemyMap: {fileID: 2800000, guid: 98a70a3634014417486153d53310eba6, type: 3}
+  wall: {fileID: 1685988754575380, guid: fb0a6198c31b242c0b2812c0ad6b3517, type: 2}
+  floor: {fileID: 1921506538967752, guid: b08c91717d28a4b08bb23388cb19aacd, type: 2}
+  playerPrefab: {fileID: 1822514074523696, guid: cf2b78cbb321e40af8e2f72b4fa95343,
+    type: 2}
+  ghostPrefab: {fileID: 1683159365173856, guid: fa6cb4949314b4465b0924c78348a7d7,
+    type: 2}
+  pelletPrefab: {fileID: 1246574974462240, guid: 36fa67b19072748298074ff2f5cea7ac,
+    type: 2}
+  weaponPrefab: {fileID: 1683159365173856, guid: fa6cb4949314b4465b0924c78348a7d7,
+    type: 2}
+  bulletPrefab: {fileID: 1044598816486270, guid: c35708d09a9774eb0a1b7d83272e8ecb,
+    type: 2}
+  spawnPoint: {x: 0, y: 0}

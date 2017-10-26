@@ -1,3 +1,3 @@
 ﻿public interface IDestroyable {
-	void OnDestroy();
+	void OnObjectDestroyed();
 }

@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStalker : MonoBehaviour {
+public class EnemyStalker : EnemyBase {
 
-	// Use this for initialization
-	void Start () {
-		
+	public override void Setup (Vector2 spawnPoint) {
+		base.Setup (spawnPoint);
+		strategy = EnemyDirectionStrategy_classic.Instance;
+		ChangeState (EnemyState_patrolling.Instance);
+		health = 20;
+		weakness = PelletType.red;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	public override void ChangeState (EnemyState newState) {
+		spawnpointVector = Grid.ProvideRandomPosition ();
+		base.ChangeState (newState);
 	}
 }
